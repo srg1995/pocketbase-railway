@@ -2,13 +2,9 @@ FROM alpine:latest
 
 ARG PB_VERSION=0.30.0
 
-RUN apk add --no-cache \
-    unzip \
-    ca-certificates \
-    bash \
-    curl
+RUN apk add --no-cache unzip ca-certificates bash curl
 
-# Crear carpeta de datos
+# Crear carpeta de datos persistente
 RUN mkdir -p /pb_data /pb
 
 # Descargar y descomprimir PocketBase
@@ -17,5 +13,5 @@ RUN unzip /tmp/pb.zip -d /pb/
 
 EXPOSE 8080
 
-# Iniciar PocketBase usando la carpeta persistente
+# Arrancar PocketBase usando la carpeta persistente
 CMD ["/pb/pocketbase", "serve", "--dir", "/pb_data", "--http=0.0.0.0:8080"]

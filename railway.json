@@ -1,0 +1,14 @@
+{
+  "services": [
+    {
+      "name": "pocketbase",
+      "runCommand": "pb serve --dir /pb_data --http 0.0.0.0:$PORT",
+      "persistentStorage": [
+        {
+          "mountPath": "/pb_data",
+          "name": "pb-data"
+        }
+      ]
+    }
+  ]
+}
